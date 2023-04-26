@@ -36,7 +36,12 @@ window.addEventListener('phx:page-loading-stop', (_info) => topbar.hide());
 
 window.addEventListener('phx:copy', (event) => {
   let text = event.target.innerText;
-  navigator.clipboard.writeText(text);
+  navigator.clipboard.writeText(text).then(() => {
+    document.getElementById(event.detail).innerText = 'Copied';
+    setTimeout(() => {
+      document.getElementById(event.detail).innerText = 'Copy';
+    }, 2000);
+  });
 });
 
 // connect if there are any LiveViews on the page

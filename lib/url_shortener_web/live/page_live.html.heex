@@ -47,7 +47,8 @@
         <%= @mini_url %>
       </p>
       <button
-        phx-click={JS.dispatch("phx:copy", to: "#mini_url")}
+        phx-click={JS.dispatch("phx:copy", to: "#mini_url", detail: "copy_button")}
+        id="copy_button"
         class="bg-brand/50 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6"
       >
         Copy
