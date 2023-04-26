@@ -105,4 +105,8 @@ defmodule UrlShortener.Links do
   def get_by_url(url) do
     Repo.get_by(Link, url: url)
   end
+
+  def get_by_key(key) do
+    Repo.get_by(Link, key: key)
+  end
 end

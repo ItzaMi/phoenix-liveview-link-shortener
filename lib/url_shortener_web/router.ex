@@ -17,15 +17,9 @@ defmodule UrlShortenerWeb.Router do
   scope "/", UrlShortenerWeb do
     pipe_through :browser
 
-    # get "/", PageController, :home
     live "/", PageLive, :home
 
-    live "/mini_links", LinkLive.Index, :index
-    live "/mini_links/new", LinkLive.Index, :new
-    live "/mini_links/:id/edit", LinkLive.Index, :edit
-
-    live "/mini_links/:id", LinkLive.Show, :show
-    live "/mini_links/:id/show/edit", LinkLive.Show, :edit
+    get "/:key", RedirectController, :index
   end
 
   # Other scopes may use custom stacks.

@@ -43,7 +43,7 @@
     </p>
 
     <div class="px-4 py-2 flex flex-row justify-between items-center gap-2 border border-brand rounded-md">
-      <p id="mini_url">
+      <p class="mt-4 text-base leading-7 text-zinc-600" id="mini_url">
         <%= @mini_url %>
       </p>
       <button
@@ -52,6 +52,20 @@
         class="bg-brand/50 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6"
       >
         Copy
+      </button>
+    </div>
+  <% end %>
+
+  <%= if msg = live_flash(@flash, :error) do %>
+    <div class="mt-8 px-4 py-2 flex flex-row justify-between items-center gap-2 border border-red-500 rounded-md">
+      <p class="text-base leading-7 text-zinc-600" phx-value-key="error">
+        <%= msg %>
+      </p>
+      <button
+        phx-click="lv:clear-flash"
+        class="bg-red-500/50 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6"
+      >
+        Dismiss
       </button>
     </div>
   <% end %>
