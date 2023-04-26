@@ -1,0 +1,57 @@
+<div class="left-[40rem] fixed inset-y-0 right-0 z-0 hidden lg:block xl:left-[50rem]">
+  <div class="h-full w-full bg-brand"></div>
+</div>
+<div class="px-4 py-10 max-w-[50%] sm:px-6 sm:py-28 lg:px-8 xl:px-28 xl:py-32">
+  <div class="mx-auto max-w-xl lg:mx-0">
+    <h1 class="text-brand mt-10 flex items-center text-sm font-semibold leading-6">
+      MiniLinks
+      <small class="bg-brand/5 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6">
+        by ItzaMi
+      </small>
+    </h1>
+    <p class="text-[2rem] mt-4 font-semibold leading-10 tracking-tighter text-zinc-900">
+      A simple, fast and reliable URL shortener.
+    </p>
+    <p class="mt-4 text-base leading-7 text-zinc-600">
+      MiniLinks is a simple, fast and reliable URL shortener built by <a
+        href="https://www.itzami.com/"
+        class="text-brand font-medium"
+      >
+        ItzaMi
+      </a>. It was built with the purpose of being a simple and fast way to share links with your friends and family.
+    </p>
+  </div>
+
+  <hr class="my-4" />
+
+  <form phx-submit="submit" class="mx-auto lg:mx-0 flex flex-row gap-2">
+    <input
+      name="url"
+      class="px-4 py-2 grow border border-zinc-300 rounded-md placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-brand focus:border-transparent"
+      placeholder="https://example.com"
+    />
+    <button type="submit" class="bg-brand text-white font-medium py-2 px-4 rounded-md">
+      Create a link
+    </button>
+  </form>
+
+  <%= if @mini_url !== "" do %>
+    <hr class="my-4" />
+
+    <p class="mt-4 text-base leading-7 text-zinc-600">
+      Here's your mini link!
+    </p>
+
+    <div class="px-4 py-2 flex flex-row justify-between items-center gap-2 border border-brand rounded-md">
+      <p id="mini_url">
+        <%= @mini_url %>
+      </p>
+      <button
+        phx-click={JS.dispatch("phx:copy", to: "#mini_url")}
+        class="bg-brand/50 text-[0.8125rem] ml-3 rounded-full px-2 font-medium leading-6"
+      >
+        Copy
+      </button>
+    </div>
+  <% end %>
+</div>
