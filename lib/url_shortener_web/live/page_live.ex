@@ -18,11 +18,11 @@ defmodule UrlShortenerWeb.PageLive do
 
         Links.create_link(%{url: url, key: key})
 
-        socket = assign(socket, mini_url: "http://localhost:4000/#{key}")
+        socket = assign(socket, mini_url: UrlShortenerWeb.Endpoint.url() <> "/#{key}")
         {:noreply, socket}
 
       link ->
-        socket = assign(socket, mini_url: "http://localhost:4000/#{link.key}")
+        socket = assign(socket, mini_url: UrlShortenerWeb.Endpoint.url() <> "/#{link.key}")
         {:noreply, socket}
     end
   end
